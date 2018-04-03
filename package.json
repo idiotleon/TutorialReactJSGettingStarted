@@ -1,0 +1,21 @@
+{
+  "name": "tutorialreactjsgettingstarted",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leontheprofessional7/TutorialReactJSGettingStarted.git"
+  },
+  "author": "Leon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leontheprofessional7/TutorialReactJSGettingStarted/issues"
+  },
+  "homepage": "https://github.com/leontheprofessional7/TutorialReactJSGettingStarted#readme"
+}
