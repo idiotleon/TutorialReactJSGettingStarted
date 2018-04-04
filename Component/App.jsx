@@ -10,7 +10,7 @@ class App extends React.Component {
     }
 }
 
-const Button = function (props) {
+const Button = (props) => {
     return (
         <button>{props.label}</button>
     );
