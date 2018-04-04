@@ -4,10 +4,16 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                Hello World!!
+                <Button />
             </div>
         );
     }
 }
+
+const Button = function () {
+    return (
+        <button>Go</button>
+    );
+};
 
 export default App;
