@@ -4,15 +4,15 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Button />
+                <Button label="Do" />
             </div>
         );
     }
 }
 
-const Button = function () {
+const Button = function (props) {
     return (
-        <button>Go</button>
+        <button>{props.label}</button>
     );
 };
 
