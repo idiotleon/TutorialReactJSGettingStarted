@@ -1,19 +1,17 @@
 import React from 'react';
 
 class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            counter: 0
+        }
+    }
     render() {
         return (
-            <div>
-                <Button label="Do" />
-            </div>
+            <button>{this.state.counter}</button>
         );
     }
 }
-
-const Button = (props) => {
-    return (
-        <button>{props.label}</button>
-    );
-};
 
 export default App;
