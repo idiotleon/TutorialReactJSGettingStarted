@@ -1,19 +1,11 @@
 import React from 'react';
 
 class Button extends React.Component {
-    state = { counter: 0 };
-
-    handleClick = () => {
-        // "this"[keyword] refers to the component instance
-        this.setState((prevState) => ({
-            counter: prevState.counter + 1
-        }));
-    };
 
     render() {
         return (
-            <button onClick={this.handleClick}>
-                {this.state.counter}
+            <button onClick={this.props.onClickFunction}>
+                +1
             </button>
         );
     }
@@ -21,7 +13,7 @@ class Button extends React.Component {
 
 const Result = (props) => {
     return (
-        <div>...</div>
+        <div>{props.counter}</div>
     );
 };
 
@@ -31,11 +23,21 @@ const Result = (props) => {
 *   Cannot return multiple JSON elements
 */
 class App extends React.Component {
+    // the state of a component is only accessible to that component only
+    // thus we have to move the 'state' one level upper, which is the App component
+    state = { counter: 0 };
+
+    incrementCounter = () => {
+        this.setState((prevState) => ({
+            counter: prevState.counter + 1
+        }));
+    };
+
     render() {
         return (
             <div>
-                <Button />
-                <Result />
+                <Button onClickFunction={this.incrementCounter} />
+                <Result counter={this.state.counter} />
             </div>
         );
     }
