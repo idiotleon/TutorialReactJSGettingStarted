@@ -5,11 +5,9 @@ class App extends React.Component {
 
     handleClick = () => {
         // "this"[keyword] refers to the component instance
-        this.setState((prevState) => {
-            return {
-                counter: prevState.counter + 1
-            };
-        });
+        this.setState((prevState) => ({
+            counter: prevState.counter + 1
+        }));
     };
 
     render() {
