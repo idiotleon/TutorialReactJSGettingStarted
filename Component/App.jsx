@@ -1,6 +1,6 @@
 import React from 'react';
 
-class App extends React.Component {
+class Button extends React.Component {
     state = { counter: 0 };
 
     handleClick = () => {
@@ -15,6 +15,28 @@ class App extends React.Component {
             <button onClick={this.handleClick}>
                 {this.state.counter}
             </button>
+        );
+    }
+}
+
+const Result = (props) => {
+    return (
+        <div>...</div>
+    );
+};
+
+/*
+*   Parent <div> is necessary.
+*   React component can only return 1 element.
+*   Cannot return multiple JSON elements
+*/
+class App extends React.Component {
+    render() {
+        return (
+            <div>
+                <Button />
+                <Result />
+            </div>
         );
     }
 }
