@@ -13,7 +13,6 @@ const Card = (props) => {
 };
 
 const CardList = (props) => {
-    console.log(props.data);
     return (
         <div>
             {props.cards.map(card => <Card {...card} />)}
@@ -22,20 +21,23 @@ const CardList = (props) => {
 }
 
 class Form extends React.Component {
-    handleSubmit = () => {
-        event.preventDefault();
-        console.log("Event: Form Submit", this.userNameInput.value);
 
+    state = { userName: '' }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log("Event: Form Submit", this.state.userName);
     };
 
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
                 <input type="text"
-                    ref={(input) => this.userNameInput = input}
+                    value={this.state.userName}
+                    onChange={(event) => this.setState({ userName: event.target.value })}
                     placeholder="Github username" required />
                 <button type="submit">Add Card</button>
-            </form >
+            </form>
         );
     }
 }
