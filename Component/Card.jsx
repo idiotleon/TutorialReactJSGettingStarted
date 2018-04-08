@@ -13,6 +13,7 @@ const Card = (props) => {
 };
 
 const CardList = (props) => {
+    console.log(props.data);
     return (
         <div>
             {props.cards.map(card => <Card {...card} />)}
@@ -20,4 +21,41 @@ const CardList = (props) => {
     );
 }
 
-export default CardList;
+class Form extends React.Component {
+    render() {
+        return (
+            <form>
+                <input type="text" placeholder="Github username" />
+                <button type="submit">Add Card</button>
+            </form>
+        );
+    }
+}
+
+class App extends React.Component {
+
+    state = {
+        cards: [
+            {
+                name: "Paul O'Shannessy",
+                avatar_url: "https://avatars1.githubusercontent.com/u/8445?v=4",
+                company: "Facebook"
+            }, {
+                name: "Ben Alpert",
+                avatar_url: "https://avatars0.githubusercontent.com/u/7585659?v=4",
+                company: "Facebook"
+            }
+        ]
+    };
+
+    render() {
+        return (
+            <div>
+                <Form />
+                <CardList cards={this.state.cards} />
+            </div>
+        );
+    }
+}
+
+export default App;
