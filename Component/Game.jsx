@@ -1,6 +1,7 @@
 import React from 'react';
 import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../CSS/main.css';
 
 const Stars = (props) => {
     return (
@@ -34,8 +35,8 @@ const Numbers = (props) => {
         <div className="class text-center">
             <div>
                 <span>1</span>
-                <span>2</span>
-                <span>3</span>
+                <span className="selected">2</span>
+                <span className="used">3</span>
             </div>
         </div>
     );
