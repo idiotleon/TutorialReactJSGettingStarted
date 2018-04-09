@@ -1,5 +1,5 @@
 import React from 'react';
-require('font-awesome/css/font-awesome.min.css');
+import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Stars = (props) => {
@@ -29,6 +29,18 @@ const Answer = (props) => {
     );
 }
 
+const Numbers = (props) => {
+    return (
+        <div className="class text-center">
+            <div>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+            </div>
+        </div>
+    );
+}
+
 class Game extends React.Component {
     render() {
         return (
@@ -40,6 +52,8 @@ class Game extends React.Component {
                     <Button />
                     <Answer />
                 </div>
+                <br />
+                <Numbers />
             </div>
         );
     }
