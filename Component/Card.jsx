@@ -27,10 +27,10 @@ class Form extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log("Event: Form Submit", this.state.userName);
         axios.get(`https://api.github.com/users/${this.state.userName}`)
             .then(resp => {
                 this.props.onSubmit(resp.data);
+                this.setState({ userName: '' });
             });
     };
 
@@ -50,22 +50,14 @@ class Form extends React.Component {
 class App extends React.Component {
 
     state = {
-        cards: [
-            {
-                name: "Paul O'Shannessy",
-                avatar_url: "https://avatars1.githubusercontent.com/u/8445?v=4",
-                company: "Facebook"
-            }, {
-                name: "Ben Alpert",
-                avatar_url: "https://avatars0.githubusercontent.com/u/7585659?v=4",
-                company: "Facebook"
-            }
-        ]
+        cards: []
     };
 
     addNewCard = (cardInfo) => {
-        console.log(cardInfo);
-    }
+        this.setState(prevState => ({
+            cards: prevState.cards.concat(cardInfo)
+        }))
+    };
 
     render() {
         return (
