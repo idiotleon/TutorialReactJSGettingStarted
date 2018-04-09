@@ -1,9 +1,10 @@
 import React from 'react';
 require('font-awesome/css/font-awesome.min.css');
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Stars = (props) => {
     return (
-        <div>
+        <div class="col-5">
             <i className="fa fa-star" />
             <i className="fa fa-star" />
             <i className="fa fa-star" />
@@ -15,7 +16,7 @@ const Stars = (props) => {
 const Button = (props) => {
     return (
         <div>
-            Btn
+            =
         </div>
     );
 }
@@ -23,7 +24,7 @@ const Button = (props) => {
 const Answer = (props) => {
     return (
         <div>
-            Answer
+            ...
         </div>
     );
 }
@@ -31,11 +32,14 @@ const Answer = (props) => {
 class Game extends React.Component {
     render() {
         return (
-            <div>
+            <div class="container">
                 <h3>Play Nine</h3>
-                <Stars />
-                <Button />
-                <Answer />
+                <hr />
+                <div class="row">
+                    <Stars />
+                    <Button />
+                    <Answer />
+                </div>
             </div>
         );
     }
