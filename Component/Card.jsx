@@ -30,7 +30,7 @@ class Form extends React.Component {
         console.log("Event: Form Submit", this.state.userName);
         axios.get(`https://api.github.com/users/${this.state.userName}`)
             .then(resp => {
-                console.log(resp);
+                this.props.onSubmit(resp.data);
             });
     };
 
@@ -63,10 +63,14 @@ class App extends React.Component {
         ]
     };
 
+    addNewCard = (cardInfo) => {
+        console.log(cardInfo);
+    }
+
     render() {
         return (
             <div>
-                <Form />
+                <Form onSubmit={this.addNewCard} />
                 <CardList cards={this.state.cards} />
             </div>
         );
