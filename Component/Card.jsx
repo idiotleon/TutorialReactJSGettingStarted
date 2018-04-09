@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 const Card = (props) => {
     return (
@@ -27,6 +28,10 @@ class Form extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         console.log("Event: Form Submit", this.state.userName);
+        axios.get(`https://api.github.com/users/${this.state.userName}`)
+            .then(resp => {
+                console.log(resp);
+            });
     };
 
     render() {
