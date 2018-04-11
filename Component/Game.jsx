@@ -8,14 +8,11 @@ var _ = require('lodash');
 const Stars = (props) => {
     const numberOfStars = 1 + Math.floor(Math.random() * 9);
 
-    let stars = [];
-    for (let i = 0; i < numberOfStars; i++) {
-        stars.push(<i key={i} className="fa fa-star" />);
-    }
-
     return (
         <div class="col-5">
-            {stars}
+            {_.range(numberOfStars).map(i =>
+                <i key={i} className="fa fa-star"></i>
+            )}
         </div>
     );
 }
@@ -31,7 +28,10 @@ const Button = (props) => {
 const Answer = (props) => {
     return (
         <div>
-            ...
+            <div className="col-5">
+                <span>5</span>
+                <span>6</span>
+            </div>
         </div>
     );
 }
