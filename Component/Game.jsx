@@ -65,7 +65,7 @@ class Game extends React.Component {
                     <Answer selectedNumbers={this.state.selectedNumbers} />
                 </div>
                 <br />
-                <Numbers />
+                <Numbers selectedNumbers={this.state.selectedNumbers} />
             </div>
         );
     }
