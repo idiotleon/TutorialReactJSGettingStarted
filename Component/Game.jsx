@@ -3,12 +3,14 @@ import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../CSS/main.css';
 
+var _ = require('lodash');
+
 const Stars = (props) => {
     const numberOfStars = 1 + Math.floor(Math.random() * 9);
 
     let stars = [];
-    for(let i = 0; i < numberOfStars; i++){
-        stars.push(<i key={i} className="fa fa-star"/>);
+    for (let i = 0; i < numberOfStars; i++) {
+        stars.push(<i key={i} className="fa fa-star" />);
     }
 
     return (
@@ -35,12 +37,13 @@ const Answer = (props) => {
 }
 
 const Numbers = (props) => {
+    const arrayOfNumbers = _.range(1, 10);
+
     return (
         <div className="class text-center">
             <div>
-                <span>1</span>
-                <span className="selected">2</span>
-                <span className="used">3</span>
+                {arrayOfNumbers.map((number, i) =>
+                    <span key={i}>{number}</span>)}
             </div>
         </div>
     );
