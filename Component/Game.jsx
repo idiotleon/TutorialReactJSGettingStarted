@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../CSS/main.css';
 
 const Stars = (props) => {
-    const numberOfStars = 5;
+    const numberOfStars = 1 + Math.floor(Math.random() * 9);
 
     let stars = [];
     for(let i = 0; i < numberOfStars; i++){
