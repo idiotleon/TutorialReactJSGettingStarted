@@ -41,8 +41,12 @@ const Button = (props) => {
             break;
     }
     return (
-        <div className="col-2">
+        <div className="col-2 text-center">
             {button}
+            <br /><br />
+            <button className="btn btn-warning btn-sm" onClick={props.redraw}>
+                <i className="fa fa-refresh"></i>
+            </button>
         </div>
     );
 }
@@ -132,6 +136,14 @@ class Game extends React.Component {
         }));
     }
 
+    redraw = () => {
+        this.setState({
+            randomNumberOfStars: 1 + Math.floor(Math.random() * 9),
+            answerIsCorrect: null,
+            selectedNumbers: []
+        });
+    }
+
     render() {
         const {
             selectedNumbers,
@@ -149,7 +161,8 @@ class Game extends React.Component {
                     <Button selectedNumbers={selectedNumbers}
                         checkAnswer={this.checkAnswer}
                         acceptAnswer={this.acceptAnswer}
-                        answerIsCorrect={answerIsCorrect} />
+                        answerIsCorrect={answerIsCorrect}
+                        redraw={this.redraw} />
                     <Answer selectedNumbers={selectedNumbers}
                         unselectNumber={this.unselectNumber} />
                 </div>
