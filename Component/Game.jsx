@@ -86,18 +86,19 @@ class Game extends React.Component {
     }
 
     render() {
+        const { selectedNumbers, randomNumberOfStars } = this.state;
         return (
             <div class="container">
                 <h3>Play Nine</h3>
                 <hr />
                 <div class="row">
-                    <Stars numberOfStars={this.state.randomNumberOfStars} />
+                    <Stars numberOfStars={randomNumberOfStars} />
                     <Button />
-                    <Answer selectedNumbers={this.state.selectedNumbers}
+                    <Answer selectedNumbers={selectedNumbers}
                         unselectNumber={this.unselectNumber} />
                 </div>
                 <br />
-                <Numbers selectedNumbers={this.state.selectedNumbers}
+                <Numbers selectedNumbers={selectedNumbers}
                     selectNumber={this.selectNumber} />
             </div>
         );
