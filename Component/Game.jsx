@@ -5,6 +5,37 @@ import '../CSS/main.css';
 
 var _ = require('lodash');
 
+var possibleCombinationSum = function (arr, n) {
+    if (arr.indexOf(n) > 0) {
+        return true;
+    }
+
+    if (arr[0] > n) {
+        return false;
+    }
+
+    if (arr[arr.length - 1] > n) {
+        arr.pop();
+        return possibleCombinationSum(arr, n);
+    }
+
+    var listSize = arr.length, combinationsCount = (1 << listSize);
+
+    for (var i = 1; i < combinationsCount; i++) {
+        var combinationSum = 0;
+        for (var j = 0; j < listSize; j++) {
+            if (i & (1 << j)) {
+                combinationSum += arr[j];
+            }
+        }
+        if (n === combinationSum) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 const Stars = (props) => {
 
     return (
@@ -109,7 +140,7 @@ class Game extends React.Component {
         randomNumberOfStars: Game.getRandomNumber(),
         answerIsCorrect: null,
         redraws: 5,
-        doneStatus: 'Game Over!'
+        doneStatus: null
     };
 
     selectNumber = (clickedNumber) => {
@@ -146,7 +177,7 @@ class Game extends React.Component {
             selectedNumbers: [],
             answerIsCorrect: null,
             randomNumberOfStars: Game.getRandomNumber()
-        }));
+        }), this.updateDoneStatus);
     }
 
     redraw = () => {
@@ -156,7 +187,27 @@ class Game extends React.Component {
             answerIsCorrect: null,
             selectedNumbers: [],
             redraws: prevState.redraws - 1
-        }));
+        }), this.updateDoneStatus);
+    }
+
+    possibleSolutions = ({ randomNumberOfStars, usedNumbers }) => {
+        const possibleNumbers = _.range(1, 10).filter(number =>
+            usedNumbers.indexOf(number) === -1
+        );
+
+        return possibleCombinationSum(possibleNumbers, randomNumberOfStars);
+    };
+
+    updateDoneStatus = () => {
+        this.setState(prevState => {
+            if (prevState.usedNumbers.length === 9) {
+                return { doneStatus: 'Done. Nice!' };
+            }
+            if (prevState.redraws === 0 &&
+                !this.possibleSolutions(prevState)) {
+                return { doneStatus: 'Game Over!' };
+            }
+        });
     }
 
     render() {
