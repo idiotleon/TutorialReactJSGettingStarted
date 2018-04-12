@@ -18,8 +18,10 @@ const Stars = (props) => {
 
 const Button = (props) => {
     return (
-        <div>
-            =
+        <div className="col-2">
+            <button disabled={props.selectedNumbers.length === 0}>
+                =
+            </button>
         </div>
     );
 }
@@ -63,7 +65,7 @@ Numbers.list = _.range(1, 10);
 
 class Game extends React.Component {
     state = {
-        selectedNumbers: [2, 4],
+        selectedNumbers: [],
         randomNumberOfStars: 1 + Math.floor(Math.random() * 9)
     };
 
@@ -93,7 +95,7 @@ class Game extends React.Component {
                 <hr />
                 <div class="row">
                     <Stars numberOfStars={randomNumberOfStars} />
-                    <Button />
+                    <Button selectedNumbers={selectedNumbers} />
                     <Answer selectedNumbers={selectedNumbers}
                         unselectNumber={this.unselectNumber} />
                 </div>
