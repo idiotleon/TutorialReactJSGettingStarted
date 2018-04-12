@@ -6,11 +6,10 @@ import '../CSS/main.css';
 var _ = require('lodash');
 
 const Stars = (props) => {
-    const numberOfStars = 1 + Math.floor(Math.random() * 9);
 
     return (
         <div class="col-5">
-            {_.range(numberOfStars).map(i =>
+            {_.range(props.numberOfStars).map(i =>
                 <i key={i} className="fa fa-star"></i>
             )}
         </div>
@@ -61,7 +60,8 @@ Numbers.list = _.range(1, 10);
 
 class Game extends React.Component {
     state = {
-        selectedNumbers: [2, 4]
+        selectedNumbers: [2, 4],
+        randomNumberOfStars: 1 + Math.floor(Math.random() * 9)
     };
 
     selectNumber = (clickedNumber) => {
@@ -76,7 +76,7 @@ class Game extends React.Component {
                 <h3>Play Nine</h3>
                 <hr />
                 <div class="row">
-                    <Stars />
+                    <Stars numberOfStars={this.state.randomNumberOfStars} />
                     <Button />
                     <Answer selectedNumbers={this.state.selectedNumbers} />
                 </div>
